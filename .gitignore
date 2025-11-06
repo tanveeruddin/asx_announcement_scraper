@@ -1,0 +1,96 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# UV
+.uv/
+uv.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+coverage.xml
+*.cover
+
+# Database
+*.db
+*.sqlite3
+*.sql
+
+# Local data storage
+data/
+pdfs/
+markdown/
+storage/
+
+# Logs
+*.log
+logs/
+
+# Frontend (Next.js)
+node_modules/
+.next/
+out/
+.vercel
+.turbo
+
+# Frontend build
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/out/
+
+# Misc
+*.bak
+*.tmp
+.cache/
+
+# Docker
+docker-compose.override.yml
+
+# Alembic
+alembic/versions/*.pyc
+
+# OS
+Thumbs.db
+.DS_Store

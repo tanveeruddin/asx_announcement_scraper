@@ -1,7 +1,7 @@
 # ASX Announcements SaaS - Task Tracker
 
 **Last Updated**: 2025-11-07
-**Overall Progress**: 7/37 tasks completed (19%)
+**Overall Progress**: 8/37 tasks completed (22%)
 
 ---
 
@@ -15,12 +15,13 @@
 - [x] Setup project structure (backend/frontend directories)
 - [x] Initialize backend with FastAPI and UV dependencies
 - [x] Setup PostgreSQL with Docker Compose for local development
+- [x] Create SQLAlchemy models (User, Company, Announcement, Subscription, StockData, Analysis, Watchlist)
 
 ---
 
 ## 🚧 In Progress
 
-None currently
+- Setup Alembic for database migrations
 
 ---
 
@@ -29,7 +30,6 @@ None currently
 ### Phase 1: Core Scraping Engine (MVP Foundation)
 
 #### Database Layer
-- [ ] Create SQLAlchemy models (User, Company, Announcement, Subscription, StockData)
 - [ ] Setup Alembic for database migrations
 
 #### Scraping & PDF Processing
@@ -116,8 +116,8 @@ None currently
 
 | Phase | Tasks | Completed | Percentage |
 |-------|-------|-----------|------------|
-| **Phase 0: Setup** | 7 | 7 | 100% ✅ |
-| **Phase 1: Core Engine** | 11 | 0 | 0% |
+| **Phase 0: Setup** | 8 | 8 | 100% ✅ |
+| **Phase 1: Core Engine** | 10 | 0 | 0% |
 | **Phase 2: Backend API** | 2 | 0 | 0% |
 | **Phase 3: Frontend** | 7 | 0 | 0% |
 | **Phase 4: Monetization** | 5 | 0 | 0% |

@@ -61,7 +61,8 @@ coverage.xml
 data/
 pdfs/
 markdown/
-storage/
+/storage/
+!/backend/app/services/storage/
 
 # Logs
 *.log

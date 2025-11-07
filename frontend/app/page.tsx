@@ -1,15 +1,11 @@
 import Link from "next/link";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="bg-blue-600 text-white shadow-lg">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold">ASX Announcements</h1>
-          <p className="text-blue-100 mt-1">AI-Powered Market Insights</p>
-        </div>
-      </header>
+      {/* Header with authentication */}
+      <Header />
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-4 py-8">

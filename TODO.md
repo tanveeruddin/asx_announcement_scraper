@@ -1,7 +1,7 @@
 # ASX Announcements SaaS - Task Tracker
 
 **Last Updated**: 2025-11-07
-**Overall Progress**: 8/37 tasks completed (22%)
+**Overall Progress**: 9/37 tasks completed (24%)
 
 ---
 
@@ -16,12 +16,13 @@
 - [x] Initialize backend with FastAPI and UV dependencies
 - [x] Setup PostgreSQL with Docker Compose for local development
 - [x] Create SQLAlchemy models (User, Company, Announcement, Subscription, StockData, Analysis, Watchlist)
+- [x] Setup Alembic for database migrations
 
 ---
 
 ## 🚧 In Progress
 
-- Setup Alembic for database migrations
+None - Ready for next phase!
 
 ---
 
@@ -30,7 +31,6 @@
 ### Phase 1: Core Scraping Engine (MVP Foundation)
 
 #### Database Layer
-- [ ] Setup Alembic for database migrations
 
 #### Scraping & PDF Processing
 - [ ] Implement scraper service to fetch ASX announcements page
@@ -101,8 +101,8 @@
 **Milestone 1: MVP Foundation - Core Scraping Engine**
 
 **Next Immediate Tasks**:
-1. Create SQLAlchemy database models
-2. Setup Alembic migrations
+1. ~~Create SQLAlchemy database models~~ ✅
+2. ~~Setup Alembic migrations~~ ✅
 3. Implement ASX scraper service
 4. Test end-to-end scraping pipeline
 
@@ -116,13 +116,13 @@
 
 | Phase | Tasks | Completed | Percentage |
 |-------|-------|-----------|------------|
-| **Phase 0: Setup** | 8 | 8 | 100% ✅ |
+| **Phase 0: Setup** | 9 | 9 | 100% ✅ |
 | **Phase 1: Core Engine** | 10 | 0 | 0% |
 | **Phase 2: Backend API** | 2 | 0 | 0% |
 | **Phase 3: Frontend** | 7 | 0 | 0% |
 | **Phase 4: Monetization** | 5 | 0 | 0% |
 | **Phase 5: Deployment** | 5 | 0 | 0% |
-| **Total** | **37** | **7** | **19%** |
+| **Total** | **37** | **9** | **24%** |
 
 ---
 
@@ -246,4 +246,4 @@ docker-compose logs -f postgres            # View logs
 
 **Status**: 🟢 Active Development
 **Phase**: Phase 1 - Core Scraping Engine
-**Next Task**: Create SQLAlchemy database models
+**Next Task**: Implement ASX scraper service

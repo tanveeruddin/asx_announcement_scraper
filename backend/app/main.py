@@ -41,19 +41,40 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Health check endpoint for monitoring."""
+    from datetime import datetime
+    from app.db.session import engine
+
+    # Check database connection
+    database_status = "connected"
+    try:
+        with engine.connect() as conn:
+            conn.execute("SELECT 1")
+    except Exception:
+        database_status = "disconnected"
+
+    status = "healthy" if database_status == "connected" else "degraded"
+
     return JSONResponse(
-        status_code=200,
+        status_code=200 if status == "healthy" else 503,
         content={
-            "status": "healthy",
+            "status": status,
+            "timestamp": datetime.utcnow().isoformat(),
             "version": settings.app_version,
             "environment": settings.environment,
+            "database": database_status,
         },
     )
 
 
-# API routes will be added here as we build them
-# Example:
-# from app.api.v1 import announcements, auth, companies
-# app.include_router(announcements.router, prefix=f"{settings.api_v1_prefix}/announcements")
-# app.include_router(auth.router, prefix=f"{settings.api_v1_prefix}/auth")
-# app.include_router(companies.router, prefix=f"{settings.api_v1_prefix}/companies")
+# Import and include API routers
+from app.api.routes import announcements, companies
+
+app.include_router(
+    announcements.router,
+    prefix=settings.api_v1_prefix,
+)
+
+app.include_router(
+    companies.router,
+    prefix=settings.api_v1_prefix,
+)

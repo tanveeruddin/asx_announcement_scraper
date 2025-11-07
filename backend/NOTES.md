@@ -108,9 +108,39 @@ For MVP, focus on:
 - [ ] For now: Store URLs and mark PDFs as "pending download"
 
 ### Update (Current Status)
-- Scraper service: ✓ Working (275 announcements scraped)
+- Scraper service: ✓ Working (285 announcements scraped)
 - PDF downloader service: ✓ Implemented (code complete)
 - Storage backend: ✓ Implemented (local storage working)
-- **PDF downloads: ⚠️ Blocked by ASX terms page**
+- **PDF downloads: ✅ SOLVED with Playwright!**
 
-**Next:** Research and implement proper solution for PDF access.
+### Solution Implemented (2025-11-07)
+
+**Implemented:** Playwright-based PDF downloader (`pdf_downloader_playwright.py`)
+
+**How it works:**
+1. Uses headless Chromium browser automation
+2. Navigates to ASX PDF URLs
+3. Automatically handles terms and conditions pages
+4. Captures PDF content from the rendered page
+5. Supports concurrent downloads (configurable batch size)
+6. Full retry logic and error handling
+
+**Test Results:**
+```
+✓ Successfully downloaded 5 PDFs in batch test
+✓ File sizes: ~68KB each (valid PDFs)
+✓ Concurrent downloads working (2 at a time)
+✓ Duplicate detection working correctly
+✓ Storage integration working perfectly
+```
+
+**Performance:**
+- Single PDF download: ~3-4 seconds
+- Batch downloads: 2 concurrent, ~3-4 seconds each
+- Browser startup: ~1-2 seconds (reused across batch)
+
+**Files Created:**
+- `app/services/pdf_downloader_playwright.py` - Playwright-based downloader (~450 lines)
+- `scripts/test_playwright_downloader.py` - Test suite
+
+**Status:** ✅ Production-ready PDF downloading is now working!

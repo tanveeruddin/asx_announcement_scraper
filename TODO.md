@@ -1,7 +1,7 @@
 # ASX Announcements SaaS - Task Tracker
 
 **Last Updated**: 2025-11-07
-**Overall Progress**: 13/37 tasks completed (35%)
+**Overall Progress**: 15/37 tasks completed (41%)
 
 ---
 
@@ -23,11 +23,23 @@
 - [x] Add price-sensitive announcement filtering ($ symbol detection) ✨
 - [x] Implement PDF download service with duplicate detection ✨
 - [x] Create local file storage service with configurable paths ✨
+- [x] Implement browser automation for PDF downloads (Playwright) 🎉
+- [x] Integrate PyMuPDF for PDF to Markdown conversion 🎉
 
 **Scraper Stats (tested with real data):**
-- Successfully parsed 275+ announcements
-- Identified 75+ price-sensitive announcements
+- Successfully parsed 285+ announcements
+- Identified 76+ price-sensitive announcements
 - All metadata extracted (ASX code, title, date, PDF URL, pages, file size)
+
+**PDF Download Stats (Playwright):**
+- Successfully downloaded 5 PDFs with browser automation
+- Concurrent downloads working (2 at a time)
+- Single PDF: ~3-4 seconds, Batch: configurable concurrency
+
+**PDF Processing Stats (PyMuPDF):**
+- Successfully converted 3 PDFs to Markdown
+- Metadata extraction working (pages, size, dates)
+- Clean markdown output (~3,159 chars per PDF)
 
 ---
 
@@ -37,25 +49,9 @@ None
 
 ---
 
-## ⚠️ Known Issues
-
-### PDF Download Blocker
-**Issue:** ASX requires terms acceptance before PDF access. URLs return HTML pages instead of PDFs.
-
-**Solutions (documented in backend/NOTES.md):**
-1. Implement browser automation (Selenium/Playwright) - Recommended
-2. Research official ASX API access
-3. For MVP: Store URLs, download PDFs in Phase 2
-
----
-
 ## 📋 Pending Tasks
 
 ### Phase 1: Core Scraping Engine (MVP Foundation)
-
-#### Scraping & PDF Processing
-- [ ] Implement browser automation for PDF downloads (Selenium/Playwright) OR
-- [ ] Integrate PyMuPDF for PDF to Markdown conversion (depends on PDF access)
 
 #### Intelligence Layer
 - [ ] Setup Google Gemini API integration with configurable prompts
@@ -121,18 +117,20 @@ None
 **Completed**:
 1. ~~Create SQLAlchemy database models~~ ✅
 2. ~~Setup Alembic migrations~~ ✅
-3. ~~Implement ASX scraper service~~ ✅ (275+ announcements parsed successfully!)
-4. ~~Implement PDF download infrastructure~~ ✅ (storage backends + downloader service)
+3. ~~Implement ASX scraper service~~ ✅ (285+ announcements parsed!)
+4. ~~Implement PDF download infrastructure~~ ✅ (storage backends + downloader)
+5. ~~Implement Playwright browser automation~~ ✅ (PDFs downloading!)
+6. ~~Integrate PyMuPDF for PDF to Markdown~~ ✅ (conversion working!)
 
 **Next Immediate Tasks**:
-1. Implement browser automation for PDF downloads (Selenium/Playwright)
-2. Integrate PyMuPDF for PDF to Markdown conversion
-3. Setup Google Gemini API for LLM analysis
-4. Test end-to-end pipeline (scrape → download → convert → analyze)
+1. Setup Google Gemini API for LLM analysis
+2. Implement LLM analyzer service (summary, sentiment, key insights)
+3. Integrate yfinance for stock price data
+4. Test end-to-end pipeline (scrape → download → convert → analyze → store)
 
 **Goal**: Have a complete pipeline that scrapes, downloads, analyzes announcements and stores in PostgreSQL.
 
-**Estimated Time**: 3-4 days remaining
+**Estimated Time**: 2-3 days remaining
 
 ---
 
@@ -141,12 +139,12 @@ None
 | Phase | Tasks | Completed | Percentage |
 |-------|-------|-----------|------------|
 | **Phase 0: Setup** | 9 | 9 | 100% ✅ |
-| **Phase 1: Core Engine** | 10 | 4 | 40% 🚧 |
+| **Phase 1: Core Engine** | 10 | 6 | 60% 🚧 |
 | **Phase 2: Backend API** | 2 | 0 | 0% |
 | **Phase 3: Frontend** | 7 | 0 | 0% |
 | **Phase 4: Monetization** | 5 | 0 | 0% |
 | **Phase 5: Deployment** | 5 | 0 | 0% |
-| **Total** | **37** | **13** | **35%** |
+| **Total** | **37** | **15** | **41%** |
 
 ---
 
@@ -269,5 +267,5 @@ docker-compose logs -f postgres            # View logs
 ---
 
 **Status**: 🟢 Active Development
-**Phase**: Phase 1 - Core Scraping Engine (40% complete)
-**Next Task**: Implement browser automation for PDF downloads OR Setup Gemini API for LLM analysis
+**Phase**: Phase 1 - Core Scraping Engine (60% complete)
+**Next Task**: Setup Google Gemini API for LLM-powered analysis

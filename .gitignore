@@ -91,6 +91,10 @@ docker-compose.override.yml
 # Alembic
 alembic/versions/*.pyc
 
+# Test files
+backend/scripts/*.html
+backend/scripts/*.htm
+
 # OS
 Thumbs.db
 .DS_Store

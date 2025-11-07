@@ -1,7 +1,7 @@
 # ASX Announcements SaaS - Task Tracker
 
 **Last Updated**: 2025-11-07
-**Overall Progress**: 17/37 tasks completed (46%)
+**Overall Progress**: 19/37 tasks completed (51%)
 
 ---
 
@@ -18,7 +18,7 @@
 - [x] Create SQLAlchemy models (User, Company, Announcement, Subscription, StockData, Analysis, Watchlist)
 - [x] Setup Alembic for database migrations
 
-### Phase 1: Core Scraping Engine
+### Phase 1: Core Scraping Engine ✅ COMPLETE!
 - [x] Implement scraper service to fetch ASX announcements page ✨
 - [x] Add price-sensitive announcement filtering ($ symbol detection) ✨
 - [x] Implement PDF download service with duplicate detection ✨
@@ -27,6 +27,8 @@
 - [x] Integrate PyMuPDF for PDF to Markdown conversion 🎉
 - [x] Setup Google Gemini API integration with configurable prompts 🤖
 - [x] Implement LLM analyzer service (summary, sentiment, key insights extraction) 🤖
+- [x] Integrate yfinance for stock price and market data 📊
+- [x] Setup APScheduler for periodic scraping (30-60 min intervals) ⏰
 
 **Scraper Stats (tested with real data):**
 - Successfully parsed 285+ announcements
@@ -43,7 +45,7 @@
 - Metadata extraction working (pages, size, dates)
 - Clean markdown output (~3,159 chars per PDF)
 
-**Intelligence Layer Stats (NEW!):**
+**Intelligence Layer Stats:**
 - ✅ LLM Analyzer Service implemented with Gemini API
   - Summary extraction (2-3 sentences)
   - Sentiment analysis (bullish/bearish/neutral)
@@ -57,6 +59,20 @@
   - Retry logic with exponential backoff
 - ✅ Test suite created with graceful API key handling
 
+**Automation & Orchestration (NEW!):**
+- ✅ Pipeline Orchestrator Service
+  - End-to-end processing: scrape → PDF → markdown → LLM → stock → save
+  - Per-announcement error handling and statistics
+  - Success rate tracking and detailed logging
+  - Modular design for easy testing
+- ✅ APScheduler Service
+  - Periodic scraping every N minutes
+  - Market hours mode (ASX 10am-4pm AEST/AEDT)
+  - Cron expression support for custom schedules
+  - Job management (start, stop, manual trigger)
+  - Run statistics and monitoring
+- ✅ Complete pipeline test suite
+
 ---
 
 ## 🚧 In Progress
@@ -67,14 +83,14 @@ None
 
 ## 📋 Pending Tasks
 
-### Phase 1: Core Scraping Engine (MVP Foundation)
+### Phase 1: Core Scraping Engine (MVP Foundation) ✅ COMPLETE!
 
-#### Stock Data Integration (Optional Enhancement)
+All tasks complete! Phase 1 is 100% done.
+
+#### Optional Future Enhancements
 - [ ] Implement real-time market reaction tracking (1h price changes)
 - [ ] Add extended metrics (52-week high/low, dividend yield, beta)
-
-#### Background Jobs
-- [ ] Setup APScheduler for periodic scraping (30-60 min intervals)
+- [ ] Add distributed scraping with multiple workers
 
 ---
 
@@ -126,7 +142,7 @@ None
 
 **Milestone 1: MVP Foundation - Core Scraping Engine**
 
-**Completed**:
+**Completed** ✅:
 1. ~~Create SQLAlchemy database models~~ ✅
 2. ~~Setup Alembic migrations~~ ✅
 3. ~~Implement ASX scraper service~~ ✅ (285+ announcements parsed!)
@@ -136,15 +152,16 @@ None
 7. ~~Setup Google Gemini API for LLM analysis~~ ✅ (with configurable prompts!)
 8. ~~Implement LLM analyzer service~~ ✅ (summary, sentiment, insights extraction!)
 9. ~~Integrate yfinance for stock data~~ ✅ (comprehensive metrics!)
+10. ~~Setup APScheduler for periodic scraping~~ ✅ (multiple scheduling modes!)
+11. ~~Create pipeline orchestrator~~ ✅ (end-to-end automation!)
 
-**Next Immediate Tasks**:
-1. Setup APScheduler for periodic scraping (30-60 min intervals)
-2. Test end-to-end pipeline (scrape → download → convert → analyze → stock data → store)
-3. Create FastAPI endpoints for announcements
+**Next Phase - Phase 2: Backend API**:
+1. Create FastAPI endpoints (GET /announcements, filters, search)
+2. Implement JWT authentication and OAuth integration
+3. Database service layer for CRUD operations
 
-**Goal**: Have a complete pipeline that scrapes, downloads, analyzes announcements and stores in PostgreSQL.
-
-**Estimated Time**: 1-2 days remaining
+**Goal**: ✅ ACHIEVED! Complete pipeline that scrapes, downloads, analyzes announcements.
+**Status**: Phase 1 - 100% COMPLETE! 🎉
 
 ---
 
@@ -153,12 +170,12 @@ None
 | Phase | Tasks | Completed | Percentage |
 |-------|-------|-----------|------------|
 | **Phase 0: Setup** | 9 | 9 | 100% ✅ |
-| **Phase 1: Core Engine** | 10 | 8 | 80% 🚧 |
+| **Phase 1: Core Engine** | 10 | 10 | 100% ✅ |
 | **Phase 2: Backend API** | 2 | 0 | 0% |
 | **Phase 3: Frontend** | 7 | 0 | 0% |
 | **Phase 4: Monetization** | 5 | 0 | 0% |
 | **Phase 5: Deployment** | 5 | 0 | 0% |
-| **Total** | **37** | **17** | **46%** |
+| **Total** | **37** | **19** | **51%** |
 
 ---
 
@@ -281,5 +298,5 @@ docker-compose logs -f postgres            # View logs
 ---
 
 **Status**: 🟢 Active Development
-**Phase**: Phase 1 - Core Scraping Engine (80% complete) 🎉
-**Next Task**: Setup APScheduler for periodic scraping and create end-to-end pipeline
+**Phase**: Phase 1 - Core Scraping Engine ✅ COMPLETE (100%)! Moving to Phase 2! 🚀
+**Next Task**: Create FastAPI endpoints and implement authentication (Phase 2)

@@ -190,19 +190,54 @@ uv run alembic downgrade -1
 
 ## Deployment
 
-### Frontend (Vercel)
-```bash
-# Deploy to Vercel
-cd frontend
-vercel deploy --prod
-```
+This project is deployment-ready for Vercel (frontend) and Railway (backend).
 
-### Backend (Railway)
-```bash
-# Railway CLI deployment
-cd backend
-railway up
-```
+### Quick Deployment Guide
+
+1. **Generate Secrets**
+   ```bash
+   python scripts/generate-secrets.py
+   ```
+
+2. **Deploy Backend to Railway**
+   - Create Railway project
+   - Add PostgreSQL database
+   - Configure environment variables (see `.env.railway.template`)
+   - Deploy from GitHub repository
+   - See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions
+
+3. **Deploy Frontend to Vercel**
+   - Import GitHub repository to Vercel
+   - Set root directory to `frontend`
+   - Configure environment variables (see `.env.production.template`)
+   - Deploy
+   - See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions
+
+4. **Verify Deployment**
+   ```bash
+   BACKEND_URL=https://your-backend.railway.app \
+   FRONTEND_URL=https://your-app.vercel.app \
+   ./scripts/deploy-check.sh
+   ```
+
+### Deployment Documentation
+
+For comprehensive deployment instructions, including:
+- Step-by-step Railway and Vercel setup
+- Environment variable configuration
+- Database migration guide
+- Troubleshooting common issues
+- Monitoring and maintenance
+
+See **[DEPLOYMENT.md](DEPLOYMENT.md)**
+
+### Configuration Files
+
+- `backend/railway.json` - Railway service configuration
+- `backend/Procfile` - Process definitions for Railway
+- `backend/.env.railway.template` - Production environment variables
+- `frontend/vercel.json` - Vercel deployment configuration
+- `frontend/.env.production.template` - Frontend environment variables
 
 ## Documentation
 
@@ -217,36 +252,55 @@ For detailed technical documentation, architecture decisions, and implementation
 
 ## Roadmap
 
-### Phase 1: MVP Foundation (✓ Current)
-- ✓ Project setup and documentation
-- Core scraping engine
-- PDF processing pipeline
-- Basic API endpoints
+### Phase 0: Project Setup (✅ Complete)
+- ✅ Project structure and Git repository
+- ✅ Database schema and migrations
+- ✅ Docker Compose for local development
+- ✅ Documentation (CLAUDE.md, README.md)
 
-### Phase 2: Intelligence Layer
-- Gemini API integration
-- Stock data integration
-- Market reaction analysis
+### Phase 1: Core Engine (✅ Complete)
+- ✅ ASX scraper service
+- ✅ PDF downloader with Playwright
+- ✅ PDF to Markdown converter
+- ✅ Google Gemini LLM analyzer
+- ✅ Stock data service (yfinance)
+- ✅ APScheduler orchestration
+- ✅ Pipeline integration
 
-### Phase 3: Web Application
-- Next.js frontend
-- Authentication (Google OAuth)
-- Dashboard and search UI
+### Phase 2: Backend API (✅ Complete)
+- ✅ RESTful API endpoints (FastAPI)
+- ✅ Database CRUD services
+- ✅ Pagination and filtering
+- ✅ OpenAPI documentation
+- ✅ Health check endpoints
 
-### Phase 4: Monetization
-- Stripe subscriptions
-- Free trial logic
-- Payment workflows
+### Phase 3: Frontend Application (✅ Complete)
+- ✅ Next.js 15 with App Router
+- ✅ TypeScript and Tailwind CSS
+- ✅ Announcements list with filtering
+- ✅ Announcement detail page
+- ✅ Fully typed API client
+- ✅ Responsive design
 
-### Phase 5: Production
-- Vercel deployment
-- Railway deployment
-- Cloud storage migration
+### Phase 4: Monetization (🔜 Next)
+- ⏳ Google OAuth integration
+- ⏳ NextAuth.js setup
+- ⏳ Stripe subscriptions
+- ⏳ Free trial logic
+- ⏳ Payment workflows
+
+### Phase 5: Deployment (✅ Ready)
+- ✅ Railway configuration (backend)
+- ✅ Vercel configuration (frontend)
+- ✅ Environment templates
+- ✅ Deployment documentation (DEPLOYMENT.md)
+- ✅ Deployment verification scripts
 
 ### Phase 6: Future Enhancements
-- Company watchlists
-- Email/SMS notifications
-- Mobile applications
+- ⏳ Company watchlists
+- ⏳ Email/SMS notifications
+- ⏳ Real-time WebSocket updates
+- ⏳ Mobile applications (React Native)
 
 ## Contributing
 

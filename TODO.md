@@ -1,7 +1,7 @@
 # ASX Announcements SaaS - Task Tracker
 
 **Last Updated**: 2025-11-07
-**Overall Progress**: 15/37 tasks completed (41%)
+**Overall Progress**: 17/37 tasks completed (46%)
 
 ---
 
@@ -25,6 +25,8 @@
 - [x] Create local file storage service with configurable paths ✨
 - [x] Implement browser automation for PDF downloads (Playwright) 🎉
 - [x] Integrate PyMuPDF for PDF to Markdown conversion 🎉
+- [x] Setup Google Gemini API integration with configurable prompts 🤖
+- [x] Implement LLM analyzer service (summary, sentiment, key insights extraction) 🤖
 
 **Scraper Stats (tested with real data):**
 - Successfully parsed 285+ announcements
@@ -41,6 +43,20 @@
 - Metadata extraction working (pages, size, dates)
 - Clean markdown output (~3,159 chars per PDF)
 
+**Intelligence Layer Stats (NEW!):**
+- ✅ LLM Analyzer Service implemented with Gemini API
+  - Summary extraction (2-3 sentences)
+  - Sentiment analysis (bullish/bearish/neutral)
+  - Key insights extraction (3-5 bullet points)
+  - Financial impact assessment
+  - Confidence scoring and processing time tracking
+- ✅ Stock Data Service implemented with yfinance
+  - Current price, market cap, P/E ratio
+  - Historical performance (1/3/6 month trends)
+  - Market reaction analysis capability
+  - Retry logic with exponential backoff
+- ✅ Test suite created with graceful API key handling
+
 ---
 
 ## 🚧 In Progress
@@ -53,13 +69,9 @@ None
 
 ### Phase 1: Core Scraping Engine (MVP Foundation)
 
-#### Intelligence Layer
-- [ ] Setup Google Gemini API integration with configurable prompts
-- [ ] Implement LLM analyzer service (summary, sentiment, key insights extraction)
-
-#### Stock Data Integration
-- [ ] Integrate yfinance for stock price and market data
-- [ ] Implement market reaction analysis (price change correlation)
+#### Stock Data Integration (Optional Enhancement)
+- [ ] Implement real-time market reaction tracking (1h price changes)
+- [ ] Add extended metrics (52-week high/low, dividend yield, beta)
 
 #### Background Jobs
 - [ ] Setup APScheduler for periodic scraping (30-60 min intervals)
@@ -121,16 +133,18 @@ None
 4. ~~Implement PDF download infrastructure~~ ✅ (storage backends + downloader)
 5. ~~Implement Playwright browser automation~~ ✅ (PDFs downloading!)
 6. ~~Integrate PyMuPDF for PDF to Markdown~~ ✅ (conversion working!)
+7. ~~Setup Google Gemini API for LLM analysis~~ ✅ (with configurable prompts!)
+8. ~~Implement LLM analyzer service~~ ✅ (summary, sentiment, insights extraction!)
+9. ~~Integrate yfinance for stock data~~ ✅ (comprehensive metrics!)
 
 **Next Immediate Tasks**:
-1. Setup Google Gemini API for LLM analysis
-2. Implement LLM analyzer service (summary, sentiment, key insights)
-3. Integrate yfinance for stock price data
-4. Test end-to-end pipeline (scrape → download → convert → analyze → store)
+1. Setup APScheduler for periodic scraping (30-60 min intervals)
+2. Test end-to-end pipeline (scrape → download → convert → analyze → stock data → store)
+3. Create FastAPI endpoints for announcements
 
 **Goal**: Have a complete pipeline that scrapes, downloads, analyzes announcements and stores in PostgreSQL.
 
-**Estimated Time**: 2-3 days remaining
+**Estimated Time**: 1-2 days remaining
 
 ---
 
@@ -139,12 +153,12 @@ None
 | Phase | Tasks | Completed | Percentage |
 |-------|-------|-----------|------------|
 | **Phase 0: Setup** | 9 | 9 | 100% ✅ |
-| **Phase 1: Core Engine** | 10 | 6 | 60% 🚧 |
+| **Phase 1: Core Engine** | 10 | 8 | 80% 🚧 |
 | **Phase 2: Backend API** | 2 | 0 | 0% |
 | **Phase 3: Frontend** | 7 | 0 | 0% |
 | **Phase 4: Monetization** | 5 | 0 | 0% |
 | **Phase 5: Deployment** | 5 | 0 | 0% |
-| **Total** | **37** | **15** | **41%** |
+| **Total** | **37** | **17** | **46%** |
 
 ---
 
@@ -267,5 +281,5 @@ docker-compose logs -f postgres            # View logs
 ---
 
 **Status**: 🟢 Active Development
-**Phase**: Phase 1 - Core Scraping Engine (60% complete)
-**Next Task**: Setup Google Gemini API for LLM-powered analysis
+**Phase**: Phase 1 - Core Scraping Engine (80% complete) 🎉
+**Next Task**: Setup APScheduler for periodic scraping and create end-to-end pipeline

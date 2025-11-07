@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { getAnnouncements, AnnouncementList, PaginatedResponse } from '@/lib/api';
 import AnnouncementCard from '@/components/AnnouncementCard';
 import FilterBar from '@/components/FilterBar';
+import Header from '@/components/Header';
 
 export default function AnnouncementsPage() {
   const [announcements, setAnnouncements] = useState<PaginatedResponse<AnnouncementList> | null>(null);
@@ -40,14 +40,8 @@ export default function AnnouncementsPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="bg-blue-600 text-white shadow-lg">
-        <div className="container mx-auto px-4 py-4">
-          <Link href="/" className="text-2xl font-bold hover:text-blue-100">
-            ASX Announcements
-          </Link>
-        </div>
-      </header>
+      {/* Header with authentication */}
+      <Header />
 
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-4 py-8">

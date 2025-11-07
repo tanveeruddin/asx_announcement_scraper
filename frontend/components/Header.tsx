@@ -10,7 +10,7 @@ import { useAuth } from '@/contexts/AuthContext';
 
 export default function Header() {
   const router = useRouter();
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, logout, hasSubscription, subscriptionStatus } = useAuth();
 
   const handleLogout = async () => {
     await logout();
@@ -39,6 +39,27 @@ export default function Header() {
             >
               Announcements
             </Link>
+
+            <Link
+              href="/pricing"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              Pricing
+            </Link>
+
+            {isAuthenticated && (
+              <Link
+                href="/subscription"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center space-x-1"
+              >
+                <span>Subscription</span>
+                {subscriptionStatus === 'trialing' && (
+                  <span className="px-2 py-0.5 text-xs bg-blue-100 text-blue-700 rounded-full">
+                    Trial
+                  </span>
+                )}
+              </Link>
+            )}
 
             {isAuthenticated ? (
               <>

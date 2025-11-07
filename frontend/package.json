@@ -22,7 +22,8 @@
     "axios": "^1.7.2",
     "date-fns": "^4.1.0",
     "next-auth": "^4.24.5",
-    "@react-oauth/google": "^0.12.1"
+    "@react-oauth/google": "^0.12.1",
+    "@stripe/stripe-js": "^4.10.0"
   },
   "devDependencies": {
     "eslint": "^9.17.0",
